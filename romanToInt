@@ -1,0 +1,28 @@
+class Solution(object):
+    def romanToInt(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+
+        LettertoNumber = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
+            }
+
+        #enumeration =  enumerate(s)
+        Overallnumber = 0
+        for index,letter in enumerate(s):
+            number = LettertoNumber[letter]
+            if index < len(s) - 1:
+                nextnumber = LettertoNumber[s[index + 1]]
+                if number < nextnumber:
+                    number = 0 - number
+            Overallnumber += number
+        print(Overallnumber)
+        return Overallnumber
